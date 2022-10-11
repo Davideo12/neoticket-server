@@ -1,8 +1,10 @@
 const express = require("express")
 const DB = require("./DbManager")
+const Page = require("./Page")
 const app = express()
 
-//var db = new DB('localhost', 'root', 'olacocacola');
+var page = new Page(app)
+var db = new DB('localhost', 'root', 'olacocacola')
 
 app.set('view engine', 'pug')
 
@@ -14,29 +16,16 @@ app.get("/", (req, res) => {
     }
 })
 
-/* function page(element) {
-    app.get("/" + element.hash, (req, res) => {
-        try {
-            res.render('monitor', {
-                nombre: element.nombre,
-                role: element.role,
-                auth: element.auth
-            })
-        } catch (error) {
-            res.status(500)
-        }
-    })
-}
 
 db.connect()
 db.getAllTickets((err, result) => {
     if(err) throw err
     result.forEach(element => {
-        page(element)
+        page.create(element)
     });
-}) */
+})
 
 
-app.listen(4040 || process.env.PORT, () => {
+app.listen(process.env.PORT || 4040, () => {
     console.log("+ Servidor online")
 })

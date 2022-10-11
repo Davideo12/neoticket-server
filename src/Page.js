@@ -5,12 +5,17 @@ class Page {
     }
 
     create(data) {
-        this.app('/' + data.hash, (req, res) => {
-            res.render('page', {
-                role: data.role,
-                nombre: data.nombre,
-                auth: data.auth
-            })
+        var route = '/' + data.hash
+        this.app.get(route, (req, res) => {
+            try {
+                res.render('monitor', {
+                    nombre: data.nombre,
+                    role: data.role,
+                    auth: data.auth
+                })
+            } catch (error) {
+                res.status(500)
+            }
         })
     }
 }
