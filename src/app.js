@@ -2,9 +2,7 @@ const express = require("express")
 const DB = require("./DbManager")
 const app = express()
 
-const Page = require('./Page')
-
-var db = new DB('localhost', 'root', 'olacocacola');
+//var db = new DB('localhost', 'root', 'olacocacola');
 
 app.set('view engine', 'pug')
 
@@ -16,7 +14,7 @@ app.get("/", (req, res) => {
     }
 })
 
-function page(element) {
+/* function page(element) {
     app.get("/" + element.hash, (req, res) => {
         try {
             res.render('monitor', {
@@ -36,7 +34,7 @@ db.getAllTickets((err, result) => {
     result.forEach(element => {
         page(element)
     });
-})
+}) */
 
 
 app.listen(4040 || process.env.PORT, () => {
