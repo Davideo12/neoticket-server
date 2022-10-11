@@ -8,6 +8,14 @@ var db = new DB('localhost', 'root', 'olacocacola');
 
 app.set('view engine', 'pug')
 
+app.get("/", (req, res) => {
+    try {
+        res.send("NEOTICKET")
+    } catch (error) {
+        res.status(500)
+    }
+})
+
 function page(element) {
     app.get("/" + element.hash, (req, res) => {
         try {
