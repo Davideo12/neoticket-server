@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neoticket</title>
+</head>
+<body>
+    <center>
+        <div>
+            <h3 id="role"> 
+                <%= role %>
+            </h3>
+        </div>
+        <div>
+            <h2> 
+                <%= nombre %>
+            </h2>
+        </div>
+        <br>
+        <div>
+            <h1 id="auth">
+                <%= auth %>
+            </h1>
+        </div>
+      </center>
+</body>
+
+<style>
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #0f0f0f;
+    color: #e8e8e8;
+  }
+  
+  center {
+    padding: 20%;
+    border: 2px #e8e8e8 solid;
+  }
+
+  .org {
+    color: gold
+  }
+
+  .auth {
+    color: rgb(63, 152, 24)
+  }
+
+  .noauth {
+    color: rgb(177, 36, 36)
+  }
+</style>
+
+<script>
+    var auth = document.getElementById("auth")
+    var role = document.getElementById("role")
+
+    if(auth.innerText == "Autorizado") {
+        auth.className = "auth"
+    } else {
+        auth.className = "noauth"
+    }
+
+    if(role.innerText == "ORGANIZADOR") {
+        role.className = "org"
+        role.innerText += "✨"
+    }
+</script>

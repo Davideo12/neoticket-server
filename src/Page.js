@@ -1,4 +1,3 @@
-
 class Page {
     constructor(app) {
         this.app = app
@@ -8,10 +7,20 @@ class Page {
         var route = '/' + data.hash
         this.app.get(route, (req, res) => {
             try {
-                res.render('monitor', {
-                    nombre: data.nombre,
-                    role: data.role,
-                    auth: data.auth
+                var nombre = data.nombre
+                var role = data.role
+                var auth = ""
+
+                if(data.auth == "TRUE") {
+                    auth = "Autorizado"
+                } else if (data.auth == "FALSE") {
+                    auth = "NO Autorizado"
+                }
+
+                res.render('page', {
+                    nombre,
+                    role,
+                    auth
                 })
             } catch (error) {
                 res.status(500)

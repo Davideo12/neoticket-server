@@ -6,7 +6,7 @@ const app = express()
 var page = new Page(app)
 var db = new DB('localhost', 'root', 'olacocacola')
 
-app.set('view engine', 'pug')
+app.set('view engine', 'ejs')
 
 app.get("/", (req, res) => {
     try {
