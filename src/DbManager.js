@@ -1,11 +1,12 @@
 const mysql = require("mysql")
 
 class DB {
-    constructor(host, username, password) {
+    constructor(host, username, password, port, dbName) {
         this.host = host
         this.username = username
         this.password = password
-        this.database = "neoticket"
+        this.port = port
+        this.database = dbName
         this.sqlInstance = undefined
     }
 
@@ -14,7 +15,8 @@ class DB {
             host: this.host,
             user: this.username,
             password: this.password,
-            database: this.database
+            database: this.database,
+            port: this.port
         })
         this.sqlInstance.connect((error) => {
             if(error) {
