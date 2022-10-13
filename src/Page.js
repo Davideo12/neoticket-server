@@ -1,8 +1,4 @@
-const cors = require("cors")
 
-const corsOptions = {
-    
-}
 
 class Page {
     constructor(app) {
