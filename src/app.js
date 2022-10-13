@@ -8,18 +8,7 @@ const cors = require("cors")
 //var db = new DB('db-mysql-nyc1-jdavideo-do-user-12644913-0.b.db.ondigitalocean.com', 'doadmin', 'AVNS_4JxICbu61YArzZoom1c', 25060, 'neoticket');
 //var db = new DB('localhost', 'root', 'olacocacola', 3306, 'neoticket');
 
-const whitelist = ['http://']
-var corsOptions = {
-    origin: function (origin, callback) {
-      if (whitelist.indexOf(origin) !== -1) {
-        callback(null, true)
-      } else {
-        callback(new Error('Not allowed by CORS'))
-      }
-    }
-  }
-
-//app.use(cors(corsOptions))
+app.use(cors())
 
 app.set('view engine', 'ejs')
 
