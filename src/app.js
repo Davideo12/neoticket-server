@@ -11,7 +11,7 @@ const app = express()
 const PORT = process.env.PORT || 4040
 
 const corsOptions = {
-    origin: "http://187.224.64.165"
+    origin: "187.224.64.165"
 }
 
 app.use(cors(corsOptions))
