@@ -25,10 +25,16 @@ class Page {
 
                 result.forEach(element => {
                     if(element.hash == reqHash) {
+                        var auth
+                        if(element.auth == "TRUE") {
+                            auth = "Autorizado"
+                        } else {
+                            auth = "No Autorizado"
+                        }
                         res.render('page', {
                             nombre: element.nombre,
                             role: element.role,
-                            auth: element.auth
+                            auth: auth
                         })
                         res.end()
                     }
