@@ -25,7 +25,11 @@ class Page {
 
                 result.forEach(element => {
                     if(element.hash == reqHash) {
-                        res.json(element)
+                        res.render('page', {
+                            nombre: element.nombre,
+                            role: element.role,
+                            auth: element.auth
+                        })
                         res.end()
                     }
                 })
