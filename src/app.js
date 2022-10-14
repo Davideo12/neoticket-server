@@ -14,6 +14,13 @@ app.set('view engine', 'ejs')
 app.get("/", (req, res) => {
     try {
         res.send("NEOTICKET")
+        db.connect()
+        db.getAllTickets((err, result) => {
+            if(err) throw err
+            result.forEach(element => {
+                page.create(element)
+            });
+        }) 
     } catch (error) {
         res.status(500)
     }
