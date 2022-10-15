@@ -1,12 +1,13 @@
 const DB = require("./DbManager")
 
 const dbConfig = {
-    host: process.env.DB_HOST,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    port: process.env.DB_PORT,
-    database: process.env.DATABASE_NAME
+    host: 'db-mysql-nyc1-jdavideo-do-user-12644913-0.b.db.ondigitalocean.com',
+    user: 'doadmin',
+    password: 'AVNS_4JxICbu61YArzZoom1c',
+    port: 25060,
+    database: 'neoticket'
 }
+
 
 class Page {
     constructor() {
