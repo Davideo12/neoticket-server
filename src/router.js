@@ -19,4 +19,13 @@ router.get("/:hash", (req, res) => {
     }
 })
 
+router.post("/edit", (req, res) => {
+    try {
+        var hash = req.hash
+        
+    } catch (error) {
+        res.status
+    }
+})
+
 module.exports = router
