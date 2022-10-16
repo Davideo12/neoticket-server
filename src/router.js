@@ -3,7 +3,7 @@ const Page = require('./Page')
 
 router.get("/", (req, res) => {
     try {
-        res.send("<h1> NEOTICKET </h1>")
+        res.render('index')
     } catch (error) {
         res.status(500)
         res.json(error)
@@ -22,7 +22,7 @@ router.get("/:hash", (req, res) => {
 router.post("/edit", (req, res) => {
     try {
         var hash = req.hash
-        
+
     } catch (error) {
         res.status
     }
