@@ -11,7 +11,7 @@ class DB {
             if(error) {
                 console.log("! Error conenctando DB")
             } else {
-                console.log("+ DB Conectada")
+                console.log("+ Conexion a DB")
             }
         })
     }
@@ -27,7 +27,7 @@ class DB {
     }
 
     //  Retorna los datos de todos los tickets en una tabla
-    async getAllTickets(callback) {      
+    getAllTickets(callback) {      
         this.connection.query("SELECT * FROM test", (err, result, fields) => {
             if(err) callback(err, null)
             callback(null, result)
