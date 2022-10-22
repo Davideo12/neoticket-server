@@ -3,6 +3,7 @@ const mysql = require("mysql")
 class DB {
     constructor(dbConfig) {
         this.dbConfig = dbConfig
+        this.connect()
     }
 
     connect() {
@@ -10,43 +11,26 @@ class DB {
         this.connection.connect((error) => {
             if(error) {
                 console.log("! Error conenctando DB")
-            } else {
-                console.log("+ Conexion a DB")
             }
         })
     }
 
-    //  Guarda los datos de un ticket en la DB
-    saveTicket(data) {
-
-    }
-
-    //  Retorna los datos de un solo ticket guardado, necesita el ID
-    getTicket(id) {
-        
-    }
-
-    //  Retorna los datos de todos los tickets en una tabla
-    getAllTickets(callback) {      
-        this.connection.query("SELECT * FROM test", (err, result, fields) => {
+    getTicket(hash, callback) {      
+        this.connection.query("SELECT * FROM test WHERE hash = ?", [hash], (err, result, fields) => {
             if(err) callback(err, null)
             callback(null, result)
         })  
     }
 
-    //  Elimina un solo ticket, necesita el ID
-    deleteTicket(id) {
-
+    editTicket(hash, value, callback) {
+        this.connection.query("UPDATE test SET auth = ? WHERE hash = ?", [value, hash], (err, result, fields) => {
+            if(err) callback(err, null)
+            callback(null, result)
+        })  
     }
 
-    //  Edita un solo ticket, necesita el ID
-    editTicket(id) {
-        
-    }
-
-    endConnection() {
+    close() {
         this.connection.end()
-        console.log("+ DB Cerrada")
     }
 }
 

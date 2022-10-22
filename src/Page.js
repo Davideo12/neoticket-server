@@ -10,36 +10,38 @@ const dbConfig = {
 
 
 class Page {
-    constructor() {
 
+    constructor(req, res) {
+        this.req = req
+        this.res = res
+        this.hash = this.req.params.hash
     }
 
-    create(req, res) {
-        const db = new DB(dbConfig);
-            
-        const reqHash = req.params.hash
-
-        db.connect()
-        db.getAllTickets((err, result) => {
-            if(err) throw err
-
-            result.forEach(element => {
-                if(element.hash == reqHash) {
-                    var auth
-                    if(element.auth == "TRUE") {
-                        auth = "Autorizado"
-                    } else {
-                        auth = "No Autorizado"
-                    }
-                    res.render('page', {
-                        nombre: element.nombre,
-                        role: element.role,
-                        auth: auth
-                    })
-                    res.end()
-                }
+    getData() {
+        return new Promise((resolve, reject) => {
+            const db = new DB(dbConfig)
+            db.getTicket(this.hash, (err, data) => {
+                if(err) reject(err)
+                resolve(data[0])
+                db.close()
             })
         })
+    }
+
+    renderPage(data) {
+        this.res.render('page', {
+            nombre: data.nombre,
+            role: data.role,
+            auth: Number(data.auth) ? "Autorizado" : "No-Autorizado"
+        })
+    }
+
+    create() {
+        this.getData()
+        .then( data => {
+            this.renderPage(data)
+        })
+        .catch( err => console.error(err))
     }
 }
 

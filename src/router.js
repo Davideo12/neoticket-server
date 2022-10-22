@@ -12,8 +12,8 @@ router.get("/", (req, res) => {
 
 router.get("/:hash", (req, res) => {
     try {
-        var page = new Page()
-        page.create(req, res)
+        var page = new Page(req, res)
+        page.create()
     } catch (error) {
         res.status(500)
     }

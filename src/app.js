@@ -9,5 +9,5 @@ app.set('view engine', 'ejs')
 app.use(router)
 
 app.listen(PORT, () => {
-    console.log("+ Servidor online")
+    console.log("+ Servidor online | Puerto: " + PORT)
 })
