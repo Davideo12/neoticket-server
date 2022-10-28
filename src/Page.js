@@ -1,11 +1,13 @@
 const DB = require("./DbManager")
 
+require('dotenv').config()
+
 const dbConfig = {
-    host: process.ENV.DB_HOST,
-    user: process.ENV.DB_USER,
-    password: process.ENV.DB_PASSWORD,
-    port: process.ENV.DB_PORT,
-    database: process.ENV.DATABASE
+    host: process.env.DB_HOST,
+    user: process.env.DB_USER,
+    password: process.env.DB_PASSWORD,
+    port: process.env.DB_PORT,
+    database: process.env.DATABASE
 }
 
 
