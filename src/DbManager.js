@@ -16,14 +16,14 @@ class DB {
     }
 
     getTicket(hash, callback) {      
-        this.connection.query("SELECT * FROM test WHERE hash = ?", [hash], (err, result, fields) => {
+        this.connection.query("SELECT * FROM test WHERE hash = ?;", [hash], (err, result, fields) => {
             if(err) callback(err, null)
             callback(null, result)
         })  
     }
 
     editTicket(hash, value, callback) {
-        this.connection.query("UPDATE test SET auth = ? WHERE hash = ?", [value, hash], (err, result, fields) => {
+        this.connection.query("UPDATE test SET auth = ? WHERE hash = ?;", [value, hash], (err, result, fields) => {
             if(err) callback(err, null)
             callback(null, result)
         })  
