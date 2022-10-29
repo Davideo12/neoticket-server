@@ -2,13 +2,17 @@ const DB = require("./DbManager")
 
 require('dotenv').config()
 
-const dbConfig = {
-    host: new String(process.env.DB_HOST),
-    user: new String(process.env.DB_USER),
-    password: new String(process.env.DB_PASSWORD),
-    port: new Number(process.env.DB_PORT),
-    database: new String(process.env.DATABASE)
-}
+var dbConfig = new Object()
+/* dbConfig.host = 'neoticket-db-do-user-12644913-0.b.db.ondigitalocean.com'
+dbConfig.user = 'doadmin'
+dbConfig.password = 'AVNS_V5kdMIUTge1P5ADJ_SJ'
+dbConfig.port = 25060
+dbConfig.database = 'defaultdb' */
+dbConfig.host = process.env.DB_HOST
+dbConfig.user = process.env.DB_USER
+dbConfig.password = process.env.DB_PASSWORD
+dbConfig.port = process.env.DB_PORT
+dbConfig.database = process.env.DATABASE
 
 
 class Page {
