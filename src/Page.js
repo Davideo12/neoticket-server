@@ -3,11 +3,6 @@ const DB = require("./DbManager")
 require('dotenv').config()
 
 var dbConfig = new Object()
-/* dbConfig.host = 'neoticket-db-do-user-12644913-0.b.db.ondigitalocean.com'
-dbConfig.user = 'doadmin'
-dbConfig.password = 'AVNS_V5kdMIUTge1P5ADJ_SJ'
-dbConfig.port = 25060
-dbConfig.database = 'defaultdb' */
 dbConfig.host = process.env.DB_HOST
 dbConfig.user = process.env.DB_USER
 dbConfig.password = process.env.DB_PASSWORD
@@ -47,7 +42,9 @@ class Page {
         .then( data => {
             this.renderPage(data)
         })
-        .catch( err => console.error(err))
+        .catch( err => {
+            this.res.status(404).render('notfound')
+        })
     }
 }
 

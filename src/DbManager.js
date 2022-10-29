@@ -7,7 +7,6 @@ class DB {
     }
 
     connect() {
-        console.log(this.dbConfig)
         this.connection = mysql.createConnection(this.dbConfig)
         this.connection.connect((error) => {
             if(error) throw error
