@@ -8,6 +8,6 @@ app.set('view engine', 'ejs')
 
 app.use(router)
 
-app.listen(PORT, () => {
-    console.log("+ Servidor online | Puerto: " + PORT)
+app.listen(PORT, async () => {
+    console.log(`+ Servidor online: Puerto:${PORT} IP: ${await fetch('http://ifconfig.me/ip').then(d => d.text()).then(r => r)}`)
 })
